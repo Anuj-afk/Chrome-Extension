@@ -1,0 +1,19 @@
+{
+    "manifest_version": 3,
+    "name": "Productivity Timer",
+    "version": "1.0.0",
+    "description": "An extension to increase Productivity",
+    "icons": {
+        "48": "images/image.png",
+        "128": "images/image.png"
+    },
+    "action": {
+        "default_popup": "index.html",
+        "default_title": "Productivity Timer"
+    },
+    "permissions": ["tabs", "activeTab", "scripting", "storage", "notifications"],
+    "background": {
+        "service_worker": "background.js"
+    },
+    "host_permissions": ["<all_urls>"]
+}

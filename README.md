@@ -14,14 +14,24 @@ A simple and efficient productivity timer Chrome extension that helps you stay f
    ```bash
    git clone https://github.com/yourusername/productivity-timer-extension.git
 
-2. Open **Google Chrome** and go to `chrome://extensions/`.
+2. Navigate to the project directory
+  
+3. Install the required dependencies:
+   ```bash
+   npm install
 
-3. Enable **Developer Mode** (toggle on the top right corner).
+4. Build the project:
+   ```bash
+   npm run build
 
-4. Click on **Load unpacked** and select the folder where the extension files are located.
+5. Open Google Chrome and go to chrome://extensions/.
 
-5. The extension will now be installed and visible in your Chrome toolbar.
+6. Enable Developer Mode (toggle on the top right corner).
 
+7. Click on Load unpacked and select the dist folder.
+  
+8. The extension will now be installed and visible in your Chrome toolbar.
+   
 ## Usage
 
 1. Click on the extension icon in the toolbar to open the timer popup.

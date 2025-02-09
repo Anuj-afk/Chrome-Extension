@@ -12,33 +12,30 @@ const Hours = ref(10 * Hours1.value + Hours2.value);
 const Min = ref(10 * Min1.value + Min2.value);
 const blocked = ref([""]);
 const site = ref("");
-// Default duration is 10 seconds
+
 
 
 const saveBlocked = () => {
     if (site.value.trim()) {
-        // Remove empty string (if any) before adding a new site
         if (blocked.value[blocked.value.length - 1] === "") {
             blocked.value.pop();
         }
 
-        // Add the new site to the blocked list
+
         blocked.value.push(site.value);
 
-        // Clear the input field for the next entry
         site.value = "";
 
-        // Add an empty string to trigger input field visibility again
         blocked.value.push("");
 
-        // Save to local storage
+
         chrome.storage.local.set({ blocked: Array.from(blocked.value) });
     }
 };
 
 const removeSite = (index: number) => {
-    blocked.value.splice(index, 1); // Remove item properly
-    chrome.storage.local.set({ blocked: [...blocked.value] }); // Store as array
+    blocked.value.splice(index, 1); 
+    chrome.storage.local.set({ blocked: [...blocked.value] }); 
 };
 
 const updateTimerDisplay = () => {
@@ -71,7 +68,7 @@ const startTimer = () => {
             chrome.runtime.sendMessage({
                 action: "start",
                 tabId: activeTab.id,
-                duration: Hours.value * 3600 + Min.value * 60, // Pass the duration to background.js
+                duration: Hours.value * 3600 + Min.value * 60, 
             });
         }
     });
@@ -218,7 +215,6 @@ onMounted(() => {
         <div class="text-white mt-4">
             <span class="text-xl ml-2">Blocked Sites: </span>
             <div class="flex mt-4 flex-wrap">
-                <!-- Loop through the blocked list to display actual sites -->
                 <div
                     v-for="(sites, index) in blocked"
                     :key="index"
@@ -239,11 +235,11 @@ onMounted(() => {
                             @click="saveBlocked"
                         ></i>
                     </div>
-                    <!-- Display site name -->
+
                     <span v-else class="text-[16px] text-white">{{
                         sites
                     }}</span>
-                    <!-- Remove button appears only for actual sites, not the input field -->
+
                     <i
                         v-if="sites"
                         class="fi fi-rr-x text-white text-[12px] ml-2 cursor-pointer hover:text-red-500"
@@ -251,7 +247,6 @@ onMounted(() => {
                     ></i>
                 </div>
 
-                <!-- Input field will appear only if the last item in blocked is empty, and only when the input field is empty -->
             </div>
         </div>
     </div>
